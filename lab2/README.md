@@ -117,13 +117,16 @@ Node-RED 拉出以下所示
 msg.payload = msg.payload.lat + ', ' + msg.payload.lon
 return msg;
 ```
-* `function` 的 `SERVER_LOC`：固定回傳一個定點，在此設計為 `25.02245, 121.3043` (總統府)
+* `function` 的 `SERVER_LOC`：固定回傳一個定點，在此設計為 `25.040288, 121.512160` (總統府)
 
 ![](https://i.imgur.com/mIB2J87.png)
 
 ### 實際畫面
-![](https://i.imgur.com/AFzuZpn.png)
-![](https://i.imgur.com/6p09Rp8.png)
+自己位置
+![](https://i.imgur.com/lfETpOX.png)
+![](https://i.imgur.com/3ubYX88.png)
 
-測試的時候網路有點問題 OTZ，但應該是可以正常顯示
-![](https://i.imgur.com/nFoL6PJ.png)
+server 位置
+![](https://i.imgur.com/RuRzlir.png)
+![](https://i.imgur.com/xXLJLey.png)
+
