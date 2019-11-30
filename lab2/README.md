@@ -1,9 +1,8 @@
 # 物聯網 Lab2
-
-:::info
-請先閱讀過 [OM2M 環境建置與測試](https://hackmd.io/@tf-z1zFMTIC8ADhxEcGJEA/rkt0icYhB)與[物聯網 Lab1](https://hackmd.io/@tf-z1zFMTIC8ADhxEcGJEA/HyXChh93H)
-任意支援 APK 的安卓模擬器皆可
-:::
+物聯網目錄：
+* [物聯網環境建置](/9cAzkUsBRZCozYU6PdEXDA)
+* [物聯網 Lab1](/jV8TXnQKREeo2GTfujuyRQ)
+* 本篇（Lab2）
 
 ## 感測器資料
 ### 達成目標
@@ -63,7 +62,7 @@ http://192.168.10.105:1880/SERVER_LOC
 
 多屬性需要 `&` 來分隔，在此為兩個屬性 `lat=xxx&lon=xxx`
 顯示地圖的部分可以參考 [android intent](https://developers.google.com/maps/documentation/urls/android-intents)，範例是使用經緯度搜尋，這邊使用經緯度加上縮放
-獲取 server 位置需要 `split` 得到 list，再分別記錄起來
+獲取 server 位置需要 `split` 得到陣列，再分別記錄起來
 > 須注意 list 是從 1 開始而非 0
 
 ```python=
@@ -111,7 +110,7 @@ if btn_showM.Clock:
 ![](https://i.imgur.com/IFFGqE4.png)
 
 Node-RED 拉出以下所示
-* `http-in`：分別為 `POST` 與 `GET`，也分別對應 `/MY_LOC` 與 `SERVER_LOC
+* `http-in`：分別為 `POST` 與 `GET`，也分別對應 `/MY_LOC` 與 `SERVER_LOC`
 * `function` 的 `MY_LOC`：單純把傳給 server 的內容再打包回來
 ```
 msg.payload = msg.payload.lat + ', ' + msg.payload.lon

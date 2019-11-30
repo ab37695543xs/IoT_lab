@@ -1,9 +1,8 @@
 # 物聯網 Lab1
-
-:::info
-請先閱讀過 [OM2M 環境建置與測試](https://hackmd.io/@tf-z1zFMTIC8ADhxEcGJEA/rkt0icYhB)
-任意支援 APK 的安卓模擬器皆可
-:::
+物聯網目錄：
+* [物聯網環境建置](/9cAzkUsBRZCozYU6PdEXDA)
+* 本篇（Lab1）
+* [物聯網 Lab2](/I4zHw3uDTneV2Jw3G829kQ)
 
 ## 猜數字
 ### 達成目標
@@ -89,7 +88,7 @@ if btn_quit.Click:
 
 ![](https://i.imgur.com/SUjhjrT.png)
 
-由於透過 Node-RED 作為端點，這邊 web 的 url 需對應到 Node-Red 的 `http-in`，在此設定端點為 `/hello`：
+由於透過 Node-RED 作為端點，這邊 `web` 的 `url` 需對應到 Node-Red 的 `http-in`，在此設定端點為 `/hello`：
 ```
 http://192.168.10.105:1880/hello
 ```
