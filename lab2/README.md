@@ -2,7 +2,9 @@
 物聯網目錄：
 * [物聯網環境建置](/9cAzkUsBRZCozYU6PdEXDA)
 * [物聯網 Lab1](/jV8TXnQKREeo2GTfujuyRQ)
-* 本篇（Lab2）
+* 本篇 (Lab2)
+* [物聯網 Lab4](/Tm65KQpQR0aUrsrUTlGgzQ)
+* [物聯網 Lab5](/pZzuShDZQ1qnUSOQ9RTgYg)
 
 ## 感測器資料
 ### 達成目標
@@ -53,12 +55,13 @@ if btn_get.Click:
   <img src="https://i.imgur.com/iHEndx0.png" width="40%" /> 
 </p>
 
-### 程式設計
 與 Lab1 類似，這邊設定 `web_send` 端點為 `/MY_LOC`， `web_get` 端點為 `/SERVER_LOC`，前者負責 `POST`，後者負責 `GET`
 ```
-http://192.168.10.105:1880/MY_LOC
-http://192.168.10.105:1880/SERVER_LOC
+http://電腦 IPv4:1880/MY_LOC
+http://電腦 IPv4:1880/SERVER_LOC
 ```
+
+### 程式設計
 
 多屬性需要 `&` 來分隔，在此為兩個屬性 `lat=xxx&lon=xxx`
 顯示地圖的部分可以參考 [android intent](https://developers.google.com/maps/documentation/urls/android-intents)，範例是使用經緯度搜尋，這邊使用經緯度加上縮放
@@ -113,7 +116,7 @@ Node-RED 拉出以下所示
 * `http-in`：分別為 `POST` 與 `GET`，也分別對應 `/MY_LOC` 與 `SERVER_LOC`
 * `function` 的 `MY_LOC`：單純把傳給 server 的內容再打包回來
 ```
-msg.payload = msg.payload.lat + ', ' + msg.payload.lon
+msg.payload = msg.payload.lat + ', ' + msg.payload.lon;
 return msg;
 ```
 * `function` 的 `SERVER_LOC`：固定回傳一個定點，在此設計為 `25.040288, 121.512160` (總統府)

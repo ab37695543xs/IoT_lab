@@ -1,8 +1,10 @@
 # 物聯網環境建置與測試
 物聯網目錄：
-* 本篇（Lab3）
+* 本篇 (Lab3)
 * [物聯網 Lab1](/jV8TXnQKREeo2GTfujuyRQ)
 * [物聯網 Lab2](/I4zHw3uDTneV2Jw3G829kQ)
+* [物聯網 Lab4](/Tm65KQpQR0aUrsrUTlGgzQ)
+* [物聯網 Lab5](/pZzuShDZQ1qnUSOQ9RTgYg)
 
 ## OM2M 建置
 ### 安裝 Oracle JDK 8
@@ -32,13 +34,13 @@
 [官網](https://maven.apache.org/download.cgi)下載 zip 檔
 ![](https://i.imgur.com/E5cRHET.jpg)
 
-解壓縮後記錄檔案路徑，個人是放在 C 槽下 `C:\apache-maven-3.6.2\bin`
-一樣打開 `控制台/系統與安全性/系統/進階系統設定/環境變數`，修改使用者變數中的 `Path`
-
-![](https://i.imgur.com/zvsRw8c.png)
+解壓縮後記錄檔案路徑，個人是和上面 JDK 等放在一起 `C:Java\apache-maven-3.6.2\bin`
+，一樣打開 `控制台\系統與安全性\系統\進階系統設定\環境變數`，修改使用者變數中的 `Path`
+![](https://i.imgur.com/K2PbVrt.png)
 
 如果已安裝 JDK，執行 `mvn --version` 應會出現如下所示
-![](https://i.imgur.com/Up7ol2u.png)
+![](https://i.imgur.com/5jNchow.png)
+
 
 ### 安裝 OM2M
 先選好路徑，個人一樣選在 C，在 cmd 執行以下指令
@@ -58,11 +60,11 @@ mvn clean install
 ![](https://i.imgur.com/5b9LlB1.png)
 
 
-server（NSCL）的執行檔：
+server (NSCL) 的執行檔：
 ```
 "C:\org.eclipse.om2m\org.eclipse.om2m.site.nscl\target\products\nscl\win32\win32\x86_64\start.bat"
 ```
-gateway（GSCL）的執行檔：
+gateway (GSCL) 的執行檔：
 ```
 "C:\org.eclipse.om2m\org.eclipse.om2m.site.gscl\target\products\gscl\win32\win32\x86_64\start.bat"
 ```
@@ -143,7 +145,7 @@ GET, {{gscl}}
 </om2m:sclBase>
 ```
 
-### 建立應用（MY_SENSOR）
+### 建立應用 (MY_SENSOR)
 ```
 POST, {{gscl}}/applications
 ```
@@ -164,7 +166,7 @@ POST, {{gscl}}/applications
 
 ![](https://i.imgur.com/GQbp3PS.png)
 
-### 建立容器（DATA）
+### 建立容器 (DATA)
 ```
 POST, {{gscl}}/applications/MY_SENSOR/containers
 ```
@@ -176,7 +178,7 @@ POST, {{gscl}}/applications/MY_SENSOR/containers
 ![](https://i.imgur.com/tKMrY9q.png)
 ![](https://i.imgur.com/TBARMRW.png)
 
-### 建立物件（DATA）
+### 建立物件 (DATA)
 ```
 POST, {{gscl}}/applications/MY_SENSOR/containers/DATA/contentInstances
 ```
@@ -194,7 +196,7 @@ POST, {{gscl}}/applications/MY_SENSOR/containers/DATA/contentInstances
 ![](https://i.imgur.com/lJdXMuY.png)
 
 
-### 建立訂閱（DATA）
+### 建立訂閱 (DATA)
 ```
 POST, {{gscl}}/applications/MY_SENSOR/containers/DATA/contentInstances/subscriptions
 ```
@@ -253,7 +255,7 @@ GET, http://localhost:8181/om2m/gscl
 ![](https://i.imgur.com/GraoZAM.png)
 
 
-### 建立應用（MY_SENSOR）
+### 建立應用 (MY_SENSOR)
 加入 `function` `MY_SENSOR` 形成如下所示
 ![](https://i.imgur.com/3aPFsd2.png)
 
@@ -274,7 +276,7 @@ msg.payload =
 '</om2m:application>';
 return msg;
 ```
-### 建立容器（DATA）
+### 建立容器 (DATA)
 ![](https://i.imgur.com/eeut3Bj.png)
 ```
 POST, http://localhost:8181/om2m/gscl/applications/MY_SENSOR/containers
@@ -286,7 +288,7 @@ msg.payload =
 return msg;
 ```
 
-### 建立物件（DATA）
+### 建立物件 (DATA)
 ![](https://i.imgur.com/aTvI1Ab.png)
 ```
 POST, http://localhost:8181/om2m/gscl/applications/MY_SENSOR/containers/DATA/contentInstances
@@ -302,7 +304,7 @@ msg.payload =
 return msg;
 ```
 
-### 建立訂閱（DATA）
+### 建立訂閱 (DATA)
 ![](https://i.imgur.com/pVkCDhY.png)
 ```
 POST, http://localhost:8181/om2m/gscl/applications/MY_SENSOR/containers/DATA/contentInstances/subscriptions
@@ -321,12 +323,10 @@ return msg;
 
 ![](https://i.imgur.com/fogxohj.png)
 
-再新建一次物件（DATA）後應該能看到兩個偵錯訊息，一個來自新建時的（上圖），一個來自監聽的
+再新建一次物件 (DATA) 後應該能看到兩個偵錯訊息，一個來自新建時的，一個來自監聽的
 > 有多條偵錯訊息時，滑鼠移動到其中一個訊息，左邊對應的 `debug` 元件會顯示紅框
 
 ![](https://i.imgur.com/DWU3ZqN.png)
-
-
 
 ### 刪除元件
 與連線測試相似，只是改成 `DELETE`
@@ -343,7 +343,7 @@ DELETE, http://localhost:8181/om2m/gscl/applications/MY_SENSOR
 
 ## 綜合實作
 **情境一流程：**
-1. 由 Postman 模擬字串處理受限的軟體，Post 給 Node-RED 純文字訊息
+1. 由 Postman 模擬字串處理受限的軟體，POST 給 Node-RED 純文字訊息
 2. 由 Node-RED 進行字串處理，POST 給 OM2M 建立該物件
 
 ![](https://i.imgur.com/CupB9nS.png)
@@ -357,10 +357,10 @@ Postman `body`，故意設為純文字，傳至 Node-RED 的 `/INFO`
 Node-RED `function`，一樣以 `obj` 格式送給 OM2M
 > `split()` 分割字串後會存入陣列
 ```javascript=
-var data = msg.payload.split(",")
-var name = data[0]
-var height = data[1]
-var weight = data[2]
+var data = msg.payload.split(",");
+var name = data[0];
+var height = data[1];
+var weight = data[2];
 
 msg.payload =
 '<obj>'+
@@ -375,11 +375,11 @@ return msg;
 
 **情境二流程：**
 1. 先於 OM2M 建立訂閱
-2. 由 Node-RED（或 Postman）於 OM2M 上建立物件
+2. 由 Node-RED (或 Postman) 於 OM2M 上建立物件
 3. 由 Node-RED 接收訂閱通知，並處理收到的訊息
 4. 將處理過後的訊息另外寫檔記錄
 
-首先依照之前訂閱（DATA）的教學建立訂閱，這邊將情境一由 Postman 建立物件的部分簡化給 Node-RED，同時先將 `debug` 先取消
+首先依照之前訂閱 (DATA) 的教學建立訂閱，這邊將情境一由 Postman 建立物件的部分簡化給 Node-RED，同時先將 `debug` 先取消
 > 如果之前還有 flow 的 `http-in` 有同樣路徑的，記得先刪掉，否則會跑到那邊
 
 可以看到一有新的資料建立後，訂閱的 `/SUB` 馬上就收到訊息，debug1 顯示的是完整通知的 XML，debug2 經由 parser 得到結構化的資訊，而我們需要的物件資訊就在底下這個位置
@@ -393,7 +393,7 @@ msg.payload["om2m:notify"]["om2m:representation"][0]._
 加入 `function` 進行編碼轉換，可以看到原本只是通知的 XML，裏頭拆出來的 XML 其實就是建立物件 OM2M 會回傳的訊息
 > 編碼配合 XML 與 Node-RED，統一使用 `UTF-8`
 ```javascript=
-var text = payload["om2m:notify"]["om2m:representation"][0]._
+var text = payload["om2m:notify"]["om2m:representation"][0]._;
 var data = new Buffer(text, 'base64').toString('utf8');
 msg.payload = data;
 
@@ -404,7 +404,7 @@ return msg;
 
 同樣類似方式加入 `function`，得到的正是我們新建物件時送下去的內容
 ```javascript=
-var text = msg.payload["om2m:contentInstance"]["om2m:content"][0]._
+var text = msg.payload["om2m:contentInstance"]["om2m:content"][0]._;
 var data = new Buffer(text, 'base64').toString('utf8');
 msg.payload = data;
 

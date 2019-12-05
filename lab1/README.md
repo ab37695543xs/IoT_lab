@@ -1,8 +1,10 @@
 # 物聯網 Lab1
 物聯網目錄：
 * [物聯網環境建置](/9cAzkUsBRZCozYU6PdEXDA)
-* 本篇（Lab1）
+* 本篇 (Lab1)
 * [物聯網 Lab2](/I4zHw3uDTneV2Jw3G829kQ)
+* [物聯網 Lab4](/Tm65KQpQR0aUrsrUTlGgzQ)
+* [物聯網 Lab5](/pZzuShDZQ1qnUSOQ9RTgYg)
 
 ## 猜數字
 ### 達成目標
